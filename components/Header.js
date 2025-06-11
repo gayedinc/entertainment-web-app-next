@@ -1,10 +1,27 @@
 'use client';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { BookmarkSvg, TrendingSvg, MovieSvg, TvSeriesSvg } from './Svg';
+import LogoutModal from './LogoutModal';
+import { createClient } from '@/supabase/supabaseClient';
 
 export default function Header() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      const supabase = createClient();
+      await supabase.auth.signOut();
+      router.push('/login');
+    } catch (error) {
+      console.error('Çıkış yapılırken hata oluştu:', error);
+    } finally {
+      setIsLogoutModalOpen(false);
+    }
+  };
 
   return (
     <header>
@@ -39,9 +56,20 @@ export default function Header() {
         </ul>
       </nav>
 
-      <div className="avatar-img">
-        <img src="/img/avatar.svg" alt="Avatar" />
+      <div className="header-right">
+        <div className="avatar-img">
+          <img src="/img/avatar.svg" alt="Avatar" />
+        </div>
+        <button onClick={() => setIsLogoutModalOpen(true)} className="logout-header-button">
+          Çıkış Yap
+        </button>
       </div>
+
+      <LogoutModal
+        isOpen={isLogoutModalOpen}
+        onClose={() => setIsLogoutModalOpen(false)}
+        onConfirm={handleLogout}
+      />
     </header>
   );
 }
