@@ -29,7 +29,7 @@ export function BookmarkedProvider({ children }) {
 
     if (error) {
       console.error('Error fetching bookmarks:', error);
-      toast.error('Yer işaretleri yüklenirken bir hata oluştu.');
+      toast.error('An error occurred while loading bookmarks.');
     } else {
       setBookmarks(bookmarksData);
     }
@@ -37,7 +37,7 @@ export function BookmarkedProvider({ children }) {
 
   const toggleBookmark = async (movieId) => {
     if (!user) {
-      toast.error('Yer işareti eklemek için giriş yapmalısınız.');
+      toast.error('You must be logged in to add bookmarks.');
       return;
     }
 
@@ -61,7 +61,7 @@ export function BookmarkedProvider({ children }) {
           prevBookmarks.filter(b => b.watch_id !== movieId)
         );
 
-        toast.success(`"${movie.title}" yer işaretlerinden kaldırıldı.`);
+        toast.success(`"${movie.title}" removed from bookmarks.`);
       } else {
         // Add bookmark
         const { data: newBookmark, error } = await supabase
@@ -79,14 +79,14 @@ export function BookmarkedProvider({ children }) {
         setBookmarks(prevBookmarks => [...prevBookmarks, newBookmark[0]]);
 
         const message = movie.type === 'series'
-          ? `"${movie.title}" diziler yer işaretlerine eklendi.`
-          : `"${movie.title}" filmler yer işaretlerine eklendi.`;
+          ? `"${movie.title}" added to series bookmarks.`
+          : `"${movie.title}" added to movie bookmarks.`;
 
         toast.success(message);
       }
     } catch (error) {
       console.error('Error toggling bookmark:', error);
-      toast.error('Yer işareti eklenirken/kaldırılırken bir hata oluştu.');
+      toast.error('An error occurred while adding/removing bookmark.');
     }
   };
 

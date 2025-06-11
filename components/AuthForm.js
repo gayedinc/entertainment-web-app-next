@@ -28,12 +28,12 @@ export default function AuthForm({ mode }) {
         return toast.error(error.message)
       }
 
-      toast.success('Başarıyla giriş yapıldı!')
+      toast.success('Successfully logged in!')
       router.push('/homepage')
       router.refresh()
     } else {
       if (password !== repeatPassword) {
-        return toast.error('Şifreler eşleşmiyor!')
+        return toast.error('Passwords do not match!')
       }
 
       const { error } = await supabase.auth.signUp({
@@ -45,7 +45,7 @@ export default function AuthForm({ mode }) {
         return toast.error(error.message)
       }
 
-      toast.success('Hesabınız başarıyla oluşturuldu! Lütfen giriş yapın.')
+      toast.success('Your account has been successfully created! Please login.')
       router.push('/login')
     }
   }

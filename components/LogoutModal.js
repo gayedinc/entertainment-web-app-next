@@ -6,14 +6,14 @@ export default function LogoutModal({ isOpen, onClose, onConfirm }) {
   return (
     <div className="logout-modal-overlay">
       <div className="logout-modal">
-        <h2>Çıkış Yap</h2>
-        <p>Çıkış yapmak istediğinizden emin misiniz?</p>
+        <h2>Log Out</h2>
+        <p>Are you sure you want to log out?</p>
         <div className="logout-modal-buttons">
           <button onClick={onClose} className="cancel-button">
-            İptal
+            Cancel
           </button>
           <button onClick={onConfirm} className="logout-button">
-            Çıkış Yap
+            Log Out
           </button>
         </div>
       </div>

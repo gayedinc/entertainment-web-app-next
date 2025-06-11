@@ -18,7 +18,7 @@ export default function Header() {
       await supabase.auth.signOut();
       router.push('/login');
     } catch (error) {
-      console.error('Çıkış yapılırken hata oluştu:', error);
+      console.error('Error occurred during logout:', error);
     } finally {
       setIsLogoutModalOpen(false);
     }
@@ -72,7 +72,7 @@ export default function Header() {
           />
         </div>
         <button onClick={() => setIsLogoutModalOpen(true)} className="logout-header-button">
-          Çıkış Yap
+          Log Out
         </button>
       </div>
 
