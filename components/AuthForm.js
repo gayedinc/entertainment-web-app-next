@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 import { createClient } from '@/supabase/client'
@@ -52,7 +53,12 @@ export default function AuthForm({ mode }) {
   return (
     <div className="auth-wrapper">
       <div className="auth-logo">
-        <img src="/img/movie-login-icon.svg" alt="App Logo" />
+        <Image 
+          src="/img/movie-login-icon.svg" 
+          alt="App Logo"
+          width={32}
+          height={32}
+        />
       </div>
 
       <form onSubmit={handleSubmit} className="auth-form">
@@ -91,7 +97,7 @@ export default function AuthForm({ mode }) {
         <p className="auth-footer">
           {isLogin ? (
             <>
-              Don't have an account? <a href="/signup">Sign Up</a>
+              Don&apos;t have an account? <a href="/signup">Sign Up</a>
             </>
           ) : (
             <>

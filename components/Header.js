@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { BookmarkSvg, TrendingSvg, MovieSvg, TvSeriesSvg } from './Svg';
@@ -27,7 +28,12 @@ export default function Header() {
     <header>
       <figure>
         <Link href="/homepage">
-          <img src="/img/header-icon.svg" alt="Header Icon" />
+          <Image 
+            src="/img/header-icon.svg" 
+            alt="Header Icon"
+            width={32}
+            height={32}
+          />
         </Link>
       </figure>
 
@@ -58,7 +64,12 @@ export default function Header() {
 
       <div className="header-right">
         <div className="avatar-img">
-          <img src="/img/avatar.svg" alt="Avatar" />
+          <Image 
+            src="/img/avatar.svg" 
+            alt="Avatar"
+            width={40}
+            height={40}
+          />
         </div>
         <button onClick={() => setIsLogoutModalOpen(true)} className="logout-header-button">
           Çıkış Yap

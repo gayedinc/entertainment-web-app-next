@@ -1,5 +1,6 @@
 'use client';
 import { useContext } from 'react';
+import Image from 'next/image';
 import { BookMarkedMovies } from '../context/BookmarkContext';
 import { DotSvg, MovieSvg, TvSeriesSvg } from './Svg';
 
@@ -15,18 +16,28 @@ export default function Recommended({ id, trailer, image, release_date, type, ag
   return (
     <div className="recommended-content">
       <button onClick={handleBookmarks}>
-        <img
+        <Image
           src={
             isBookmarked
               ? '/img/bookmarked.svg'
               : '/img/not-bookmarked.svg'
           }
           alt="bookmark icon"
+          width={24}
+          height={24}
         />
       </button>
 
       <div className="reco-card" onClick={() => window.open(trailer, '_blank')}>
-        <img src={image} alt={title} />
+        <Image 
+          src={image} 
+          alt={title}
+          width={470}
+          height={230}
+          style={{
+            objectFit: 'cover',
+          }}
+        />
         <div className="reco-text">
           <div className="reco-info">
             <span>{new Date(release_date).getFullYear()}</span>

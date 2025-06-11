@@ -1,5 +1,6 @@
 'use client';
 import { useContext, useState } from 'react';
+import Image from 'next/image';
 import { DataContext } from '@/context/DataContext';
 import { BookMarkedMovies } from '@/context/BookmarkContext';
 import Recommended from '@/components/Recommended';
@@ -65,17 +66,27 @@ function TrendCard({ id, trailer, image, release_date, type, age_rating, title }
   return (
     <div className="trend-container">
       <button onClick={handleBookmarks}>
-        <img
+        <Image
           src={
             isBookmarked
               ? '/img/bookmarked.svg'
               : '/img/not-bookmarked.svg'
           }
           alt="bookmark icon"
+          width={24}
+          height={24}
         />
       </button>
       <div className="trend-card" onClick={() => window.open(trailer, '_blank')}>
-        <img src={image} />
+        <Image 
+          src={image} 
+          alt={title}
+          width={470}
+          height={230}
+          style={{
+            objectFit: 'cover',
+          }}
+        />
         <div className="card-text">
           <div className="card-info">
             <span>{new Date(release_date).getFullYear()}</span>
@@ -101,7 +112,7 @@ function Search({ searchText }) {
   return (
     <div className="filtered-section">
       <h2>
-        Found {filtered.length} results for '{searchText}'
+        Found {filtered.length} results for &apos;{searchText}&apos;
       </h2>
       <div className="filtered-data">
         {filtered.map((item, i) => (
