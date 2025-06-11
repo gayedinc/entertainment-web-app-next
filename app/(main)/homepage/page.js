@@ -4,11 +4,9 @@ import { DataContext } from '@/context/DataContext';
 import { BookMarkedMovies } from '@/context/BookmarkContext';
 import Recommended from '@/components/Recommended';
 import { DotSvg } from '@/components/Svg';
-import { toast } from 'react-hot-toast';
 
 export default function HomePage() {
   const [searchText, setSearchText] = useState('');
-  console.log("HomePage yüklendi")
 
   return (
     <div className="home-page">
@@ -31,9 +29,6 @@ export default function HomePage() {
 
 function Trending() {
   const data = useContext(DataContext);
-
-  console.log("data", data);
-
 
   return (
     <>
@@ -61,16 +56,10 @@ function Trending() {
 function TrendCard({ id, trailer, image, release_date, type, age_rating, title }) {
   const { bookmarks, toggleBookmark } = useContext(BookMarkedMovies);
 
+  const isBookmarked = bookmarks?.some(bookmark => bookmark.watch_id === id);
+
   function handleBookmarks() {
     toggleBookmark(id);
-    if (bookmarks.includes(id)) {
-      toast.success('Removed from Bookmarked list.');
-    } else {
-      const message = type === 'series'
-        ? `"${title}" added to your Bookmarked Series list.`
-        : `"${title}" added to your Bookmarked Movies list."`;
-      toast.success(message);
-    }
   }
 
   return (
@@ -78,7 +67,7 @@ function TrendCard({ id, trailer, image, release_date, type, age_rating, title }
       <button onClick={handleBookmarks}>
         <img
           src={
-            bookmarks.includes(id)
+            isBookmarked
               ? '/img/bookmarked.svg'
               : '/img/not-bookmarked.svg'
           }

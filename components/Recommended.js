@@ -2,22 +2,14 @@
 import { useContext } from 'react';
 import { BookMarkedMovies } from '../context/BookmarkContext';
 import { DotSvg, MovieSvg, TvSeriesSvg } from './Svg';
-import { toast } from 'react-hot-toast';
 
 export default function Recommended({ id, trailer, image, release_date, type, age_rating, title }) {
   const { bookmarks, toggleBookmark } = useContext(BookMarkedMovies);
 
+  const isBookmarked = bookmarks?.some(bookmark => bookmark.watch_id === id);
+
   function handleBookmarks() {
     toggleBookmark(id);
-    if (bookmarks.includes(id)) {
-      toast.success("Removed from Bookmarked list.");
-    } else {
-      const message = type === 'series'
-        ? `"${title}" added to your Bookmarked Series list.`
-        : `"${title}" added to your Bookmarked Movies list.`;
-
-      toast.success(message);
-    }
   }
 
   return (
@@ -25,7 +17,7 @@ export default function Recommended({ id, trailer, image, release_date, type, ag
       <button onClick={handleBookmarks}>
         <img
           src={
-            bookmarks.includes(id)
+            isBookmarked
               ? '/img/bookmarked.svg'
               : '/img/not-bookmarked.svg'
           }
