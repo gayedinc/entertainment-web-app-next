@@ -1,0 +1,536 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+::selection {
+  background-color: #fc4747;
+  color: #ffffff;
+}
+
+.container {
+  padding: 16px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 16px;
+  background-color: #161d2f;
+}
+
+nav {
+  ul {
+    display: flex;
+    list-style: none;
+    gap: 16px;
+    padding: 0;
+
+    li {
+
+      a {
+        svg {
+          width: 16px;
+        }
+      }
+
+      &:hover {
+        
+        a {
+          svg {
+            fill: #fc4747;
+          }
+        }
+      }
+
+      &.active {
+        a {
+          svg {
+            fill: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.search-input {
+  margin-bottom: 24px;
+  border-bottom: 1px solid transparent;
+
+  &:focus-within {
+    border-bottom: 1px solid #5A698F;
+  }
+
+  input {
+    border: none;
+    background: none;
+    padding: 8px 16px 8px 40px;
+    background-image: url("/img/search-icon.svg");
+    background-repeat: no-repeat;
+    background-position: 8px center;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17.64px;
+    color: #fff;
+    width: 257px;
+    padding-left: 52px;
+    caret-color: #FC4747;
+  }
+}
+
+.filtered-section h2 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25.2px;
+  letter-spacing: -0.3125px;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25.2px;
+  letter-spacing: -0.3125px;
+  padding-bottom: 16px;
+}
+
+.slider-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.slider-track {
+  display: flex;
+  gap: 20px;
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+.trend-container {
+  position: relative;
+}
+
+.trend-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 240px;
+  height: 300px;
+  cursor: pointer;
+
+  &:hover {
+    background: url("/img/play-hover-icon.svg") center center no-repeat;
+    img {
+      opacity: 0.5;
+    }
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0.8;
+  }
+}
+
+.card-text {
+
+  padding: 16px;
+
+  h3 {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18.9px;
+  }
+}
+
+.card-info {
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  
+  span {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15.12px;
+    opacity: 0.75;
+
+    svg {
+      width: 12px;
+    }
+
+  }
+}
+
+.recommended h2 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 25.2px;
+  letter-spacing: -0.3125px;
+  padding-block: 24px;
+}
+
+.recommended-container, 
+.filtered-data,
+.movies, 
+.series,
+.bookmarked-data {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.reco-card  {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  img {
+    height: 72%;
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  &:hover {
+    background: url("/img/play-hover-icon.svg") center center no-repeat;
+    img {
+      opacity: 0.5;
+    }
+  }
+}
+
+.reco-info {
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13.86px;
+    opacity: 0.75;
+
+    svg {
+      width: 12px;
+    }
+  }
+}
+
+.reco-text h3 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.64px;
+  padding-top: 4px;
+}
+
+.recommended-content,
+.trend-container {
+
+  position: relative;
+
+  button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    right: 8px;
+    top: 8px;
+    border: none;
+    border-radius: 50%;
+    background-color: #10141ebf;
+    width: 32px;
+    height: 32px;
+    z-index: 999;
+    cursor: pointer;
+  }
+}
+
+.bookmarked-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bookmarked-movies, 
+.bookmarked-series {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25.2px;
+    letter-spacing: -0.3125px;
+  }
+}
+
+.auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.auth-logo {
+  margin-bottom: 2rem;
+}
+
+.auth-form {
+  background-color: #161d2f;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 360px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.auth-form h2 {
+  font-size: 24px;
+  color: white;
+  font-weight: 500;
+}
+
+.auth-form input {
+  padding: 0.8rem;
+  border: none;
+  border-bottom: 1px solid #5a698f;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+}
+
+.auth-form button {
+  background-color: #fc4747;
+  color: white;
+  padding: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.auth-footer {
+  text-align: center;
+  color: #a0a0a0;
+  font-size: 14px;
+}
+
+.auth-footer a {
+  color: #fc4747;
+  text-decoration: none;
+}
+
+/* Tablet Start */
+
+@media (width >= 768px) {
+
+  .container {
+    padding: 25px;
+  }
+
+  header {
+    padding: 24px;
+    margin: 24px;
+    border-radius: 10px;
+  }
+
+  .page-title {
+    font-size: 32px;
+    line-height: 40.32px;
+    letter-spacing: -0.5px;
+    padding-bottom: 25px;
+  }
+
+  .trend-card {
+    min-width: 430px;
+    height: 400px;
+  }
+
+  .card-info {
+    gap: 8px;
+    
+    span {
+      font-size: 15px;
+      line-height: 18.19px;
+    }
+  }
+
+  
+  .recommended h2 {
+    font-size: 32px;
+    line-height: 40.32px;
+    letter-spacing: -0.3125px;
+    padding-top: 39px;
+    padding-bottom: 24px;
+  }
+
+  .recommended-container, 
+  .filtered-data,
+  .movies, 
+  .series,
+  .bookmarked-data {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 30px;
+  }
+
+  .reco-card  {
+  
+    img {
+      height: 82%;
+    }
+  }
+  .reco-info {
+    gap: 8px;
+    
+    span {
+      gap: 6px;
+      font-size: 13px;
+      line-height: 16.38px;
+    }
+  }
+
+  .reco-text h3 {
+    font-size: 18px;
+    line-height: 22.68px;
+    padding-top: 5px;
+  }
+
+  .bookmarked-content {
+    gap: 48px;
+  }
+
+  .bookmarked-movies, 
+  .bookmarked-series {
+
+    h2 {
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 40.32px;
+      letter-spacing: -0.5px;
+    }
+  }
+
+  .search-input {
+    margin-bottom: 33px;
+
+    input {
+      width: 390px;
+      padding-left: 52px;
+      font-size: 24px;
+      line-height: 30.24px;
+    }
+  }
+}
+
+  
+
+/* Desktop Start */
+
+@media (width >= 1280px) {
+
+  .container {
+    padding: 36px;
+    overflow: auto;
+    height: 100vh;
+    margin-left: 125px;
+    overflow-y: auto;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  header {
+    position: fixed;
+    height: 95vh;
+    width: 95px;
+    background-color: #161d2f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 32px 0;
+    gap: 74px;
+    margin: 32px;
+  }
+
+  #root {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+  }
+
+  header {
+
+  }
+
+  nav {
+    ul {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  .recommended h2 {
+    padding-top: 40px;
+    padding-bottom: 32px;
+  }
+
+  .recommended-container, 
+  .filtered-data,
+  .movies, 
+  .series,
+  .bookmarked-data {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 32px;
+  }
+
+  .bookmarked-content {
+    gap: 48px;
+  }
+
+  .bookmarked-movies, 
+  .bookmarked-series {
+
+    h2 {
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 40.32px;
+      letter-spacing: -0.5px;
+    }
+  }
+
+  .avatar-img {
+    margin-top: auto;
+  }
+
+  .trend-card {
+    min-width: 470px;
+    height: 620px;
+  }
+}
