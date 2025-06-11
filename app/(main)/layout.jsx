@@ -7,7 +7,9 @@ export default function MainLayout({ children }) {
     <DataContextProvider>
       <BookmarkedProvider>
         <Header />
-        {children}
+        <div className="main-container">
+          {children}
+        </div>
       </BookmarkedProvider>
     </DataContextProvider>
   );
