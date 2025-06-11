@@ -9,15 +9,15 @@ export default function Header() {
   return (
     <header>
       <figure>
-        <Link href="/">
+        <Link href="/homepage">
           <img src="/img/header-icon.svg" alt="Header Icon" />
         </Link>
       </figure>
 
       <nav>
         <ul>
-          <li className={pathname === '/' ? 'active' : ''}>
-            <Link href="/">
+          <li className={pathname === '/homepage' ? 'active' : ''}>
+            <Link href="/homepage">
               <TrendingSvg />
             </Link>
           </li>

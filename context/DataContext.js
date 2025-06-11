@@ -1,4 +1,5 @@
 'use client';
+import { createClient } from '@/supabase/supabaseClient';
 import { createContext, useState, useEffect } from 'react';
 
 export const DataContext = createContext([]);
@@ -6,16 +7,16 @@ export const DataContext = createContext([]);
 export function DataContextProvider({ children }) {
   const [data, setData] = useState([]);
 
+  const supabase = createClient();
+
   useEffect(() => {
-    fetch('/data/data.json')
-      .then((res) => res.json())
-      .then((json) => {
-        const dataWithIds = json.map((item) => ({
-          ...item,
-          id: `${item.title.replace(/\s/g, '-')}-${item.release_date}`,
-        }));
-        setData(dataWithIds);
-      });
+    supabase.from('watchlist').select('*').then(({ data, error }) => {
+      if (error) {
+        console.error('Error fetching data:', error);
+      } else {
+        setData(data);
+      }
+    });
   }, []);
 
   return (

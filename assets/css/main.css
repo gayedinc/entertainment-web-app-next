@@ -356,7 +356,6 @@ nav {
 
   header {
     padding: 24px;
-    margin: 24px;
     border-radius: 10px;
   }
 
@@ -478,6 +477,7 @@ nav {
     padding: 32px 0;
     gap: 74px;
     margin: 32px;
+    left: 0;
   }
 
   #root {
