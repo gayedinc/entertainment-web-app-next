@@ -1,7 +1,5 @@
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
-import { DataContextProvider } from '../context/DataContext';
-import { BookmarkedProvider } from '../context/BookmarkContext';
 import { UserProvider } from '../context/UserContext';
 
 export const metadata = {
@@ -15,11 +13,7 @@ export default function RootLayout({ children }) {
       <body>
         <UserProvider>
           <Toaster position="top-center" />
-          <DataContextProvider>
-            <BookmarkedProvider>
-              <main className="container">{children}</main>
-            </BookmarkedProvider>
-          </DataContextProvider>
+            <main className="container">{children}</main>
         </UserProvider>
       </body>
     </html>
